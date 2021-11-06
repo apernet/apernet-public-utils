@@ -15,4 +15,4 @@
     exit 1
 }
 
-ip -6 route add default via $gw metric 0
+ip -6 route add default via $gw metric 1
