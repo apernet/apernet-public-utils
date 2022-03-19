@@ -1,0 +1,25 @@
+#!/bin/bash
+
+if [ ! -n "$1" ]; then
+    echo -e "Usage: aperutils [function_name]"; exit 1;
+fi
+
+if [ "$EUID" -ne "0" ]; then
+    type sudo >"/dev/null" 2>&1 || { echo -e "Must be run as root."; exit 1; }
+    read -p "Continue with sudo?[y/n]: " continuable
+    if [[ $continuable == "y" ]]; then
+        sudo $0 $1 || exit 1
+    else
+        exit 1
+    fi
+    exit
+fi
+
+script_body="$(curl -sS https://raw.githubusercontent.com/apernet/apernet-public-utils/master/AperNet-AU/scripts/$1)" || exit 1
+
+if [[ $script_body = "#!/bin/bash"* ]]; then
+    echo -e "$script_body" | bash
+else
+    echo -e "Function not found"
+    exit 1
+fi
