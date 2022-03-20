@@ -1,3 +1,9 @@
 #!/bin/bash
-curl -sS https://raw.githubusercontent.com/apernet/apernet-public-utils/master/AperNet-AU/sysctl.conf -o /etc/sysctl.d/20-apernet-netperformance.conf
-systemctl restart systemd-sysctl
+type systemctl >"/dev/null" 2>&1 
+if [ $? -eq 0 ]; then
+    curl -sS https://raw.githubusercontent.com/apernet/apernet-public-utils/master/AperNet-AU/sysctl.conf -o /etc/sysctl.d/20-apernet-netperformance.conf
+    systemctl restart systemd-sysctl
+else
+    curl -sS https://raw.githubusercontent.com/apernet/apernet-public-utils/master/AperNet-AU/sysctl.conf >> /etc/sysctl.conf
+    sysctl -p
+fi
