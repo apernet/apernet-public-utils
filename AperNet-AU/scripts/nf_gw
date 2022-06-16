@@ -1,0 +1,6 @@
+#!/bin/bash
+ip nei del 2400:58a0:101::6359 dev eth0 2>&1 > /dev/null
+ip nei add 2400:58a0:101::6359 lladdr ba:42:57:00:9c:bc dev eth0
+ip route add 2400:58a0:101::6359 onlink dev eth0
+ip -6 route del default
+ip -6 route add default via 2400:58a0:101::6359
