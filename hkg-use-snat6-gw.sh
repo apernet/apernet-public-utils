@@ -19,5 +19,5 @@
     exit 1
 }
 
-ip -6 route change default via $gw onlink       # in case the user is using static gw
-ip -6 route add default via $gw metric 1 onlink # in case the user is using slaac
+ip -6 route change default via $gw        # in case the user is using static gw
+ip -6 route add default via $gw metric 1  # in case the user is using slaac
