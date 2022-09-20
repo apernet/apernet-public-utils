@@ -10,7 +10,6 @@ for str in ${country[@]}; do
 done
 
 read -p "请输入数字：" num
-suffix=number[num]
 
 gateway="$prefix:${suffix[num]}"
 
