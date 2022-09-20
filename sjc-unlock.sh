@@ -14,10 +14,7 @@ suffix=number[num]
 
 gateway="$prefix:${suffix[num]}"
 
-ip -6 r 
-
-
-2001:218:3004::/48 via $gateway
+ip -6 r replace 2001:218:3004::/48 via $gateway
 ip -6 r replace 2001:418:8001::/48 via $gateway
 ip -6 r replace 2001:4f8:b::/48 via $gateway
 ip -6 r replace 2001:4f8:11::/48 via $gateway
