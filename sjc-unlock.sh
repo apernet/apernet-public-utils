@@ -14,8 +14,6 @@ suffix=number[num]
 
 gateway="$prefix:${suffix[num]}"
 
-echo $gateway
-
 ip -6 r add 2001:218:3004::/48 via $gateway
 ip -6 r add 2001:418:8001::/48 via $gateway
 ip -6 r add 2001:4f8:b::/48 via $gateway
@@ -140,3 +138,13 @@ ip -6 r add 2a10:ba00:bee5::/48 via $gateway
 ip -6 r add 2a11:5ec0::/48 via $gateway
 ip -6 r add 2a11:bd80::/32 via $gateway
 ip -6 r add 2607:f598::/32 via $gateway
+
+UA_Browser="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36"
+
+echo -e "检测 Netflix 区域中..."
+
+region=$(curl -6 --user-agent "${UA_Browser}" -fs --max-time 10 --write-out %{redirect_url} --output /dev/null "https://www.netflix.com/title/80018499" | cut -d '/' -f4 | cut -d '-' -f1)
+result1=$(curl -6 --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --output /dev/null --max-time 10 "https://www.netflix.com/title/81215567" 2>&1)
+
+echo $region
+echo $result1
