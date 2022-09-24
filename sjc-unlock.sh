@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if grep -q "#zh_CN.UTF-8 UTF-8" /etc/locale.gen; then
-  echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
-  locale-gen
-fi
+echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
+locale-gen
 
 echo "光圈美西解锁脚本"
 
