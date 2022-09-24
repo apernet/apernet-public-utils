@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "zh_CN.UTF-8 UTF-8" >> /etc/locale.gen
-locale-gen
-
 echo "光圈美西解锁脚本"
 
 country=("美国" "新加坡" "香港" "台湾" "日本" "韩国" "英国" "德国" "加拿大" "阿根廷" "土耳其" "巴基斯坦")
