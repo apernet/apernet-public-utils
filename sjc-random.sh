@@ -6,7 +6,7 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
   if echo "$(ip -6 a)" | grep -q "2602:feda:30:cafe"; then
     gw="2602:feda:30:cafe::c001"
   elif echo "$(ip -6 a)" | grep -q "2602:feda:30:ae86"; then
-    gw="2602:feda:30:ae86::30"
+    gw="2602:feda:30:ae86::991"
   else
     echo "未检测到 IPv6 地址，或是不支持的 IPv6 网段。"
     exit 1
